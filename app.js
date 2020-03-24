@@ -1,8 +1,5 @@
 
-//Assign four colors to numbers in an object
-
-
-//for each colored button, set an event listener
+//Assign four colors to numbers in an object. For each colored button, set an event listener
 
 let simonButtons = {
     1: document.getElementById('red'),
@@ -17,11 +14,9 @@ let startButtons = {
     2: document.getElementById('reset')
 }
 
-
-//declare empty array for patterns
+//declare empty array for machine patterns
 let simonPattern = [];
-
-//declare empty userClick array
+//declare empty array for user patterns
 let userPattern = [];
 
 function randomColor(x,y){
@@ -29,7 +24,6 @@ function randomColor(x,y){
 }
 
 //declare functions for lighting up buttons to patterns
-
 function lightOn (i) {
     simonButtons[simonPattern[i]].style.opacity = .2;
     setTimeout(() => {
@@ -49,55 +43,32 @@ function lightOff(i) {
 
 
 //while the game is running
-let startGame = function () {
-
+let startRound = function () {
     //generate random color
-
     let newColor = randomColor();
-
     //add first color to the pattern array
-
     simonPattern.push(newColor);
-
-    console.log(simonPattern);
-
     //highlight the button that corresponds to each color in the pattern array with time delays between
-
     lightOn(0);
-
 }
 
 //when the user clicks a button...
 function userInput(b) {
         //  store the button that the user clicked into a userClick array
         userPattern.push(b)
-
-        //check if the inputted pattern matches order of the pattern array
-
+        //check if the inputted pattern matches order of the pattern array as user inputs 
         if (userPattern[userPattern.length - 1] !== simonPattern[userPattern.length - 1]) {
             alert("Game Over.")
             simonPattern = [];
             userPattern = [];
             return false;
         }
-
+        //if arrays are the same length, check for match. If arrays match, repeat loop, otherwise reset game
         if (userPattern.length === simonPattern.length) {
             userPattern =[];
-            startGame();
+            startRound();
         }
-    
-        //if arrays are the same length, check for match
-    
-        //If arrays match, repeat loop
-    
-         
-        //otherwise, start game over 
 }
-
-
-
-//on start button click, start game 
-startButtons[1].addEventListener('click', startGame)
 
 //when the user clicks a button, store the button that the user clicked into a userClick array
 simonButtons[1].addEventListener('click', () => {
@@ -112,5 +83,8 @@ simonButtons[3].addEventListener('click', () => {
 simonButtons[4].addEventListener('click', () => {
     userInput(4)
 });
+
+//on start button click, start game 
+startButtons[1].addEventListener('click', startRound)
 
 
