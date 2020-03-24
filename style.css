@@ -60,6 +60,14 @@ h3 {
     margin-right: 8px;
 }
 
+.singleBut:active {
+    opacity: .2 !important;
+}
+
+#start:active, #reset:active {
+    opacity: .2;
+}
+
 .content {
     display: flex;
     justify-content: center;
