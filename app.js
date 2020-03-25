@@ -41,7 +41,6 @@ function lightOff(i) {
     }, 500)
 }
 
-
 //while the game is running
 let startRound = function () {
     //generate random color
@@ -49,7 +48,9 @@ let startRound = function () {
     //add first color to the pattern array
     simonPattern.push(newColor);
     //highlight the button that corresponds to each color in the pattern array with time delays between
-    lightOn(0);
+    setTimeout(() => {
+        lightOn(0);
+    }, 500)
 }
 
 //when the user clicks a button...
@@ -58,7 +59,7 @@ function userInput(b) {
         userPattern.push(b)
         //check if the inputted pattern matches order of the pattern array as user inputs 
         if (userPattern[userPattern.length - 1] !== simonPattern[userPattern.length - 1]) {
-            alert("Game Over.")
+            document.getElementById("message").innerHTML = "Wrong Pattern. Game Over."
             simonPattern = [];
             userPattern = [];
             return false;
@@ -66,6 +67,7 @@ function userInput(b) {
         //if arrays are the same length, check for match. If arrays match, repeat loop, otherwise reset game
         if (userPattern.length === simonPattern.length) {
             userPattern =[];
+            document.getElementById("message").innerHTML = "You won this round! Keep going!";
             startRound();
         }
 }
@@ -85,6 +87,18 @@ simonButtons[4].addEventListener('click', () => {
 });
 
 //on start button click, start game 
-startButtons[1].addEventListener('click', startRound)
+startButtons[1].addEventListener('click', () => {
+    document.getElementById("message").innerHTML = "Repeat the pattern";
+    startRound();
+});
 
+startButtons[2].addEventListener('click', () => {
+    simonPattern = [];
+    userPattern = [];
+    simonButtons[1].style.opacity = 1;
+    simonButtons[2].style.opacity = 1;
+    simonButtons[3].style.opacity = 1;
+    simonButtons[4].style.opacity = 1;
+    document.getElementById("message").innerHTML = "Game reset.";
+})
 
