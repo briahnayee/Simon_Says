@@ -88,3 +88,4 @@ simonButtons[4].addEventListener('click', () => {
 startButtons[1].addEventListener('click', startRound)
 
 
+//comment
