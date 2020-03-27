@@ -2,18 +2,20 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: #bf88b4;
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    color: purple;
+    color: black;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 h3 {
     display: flex;
     justify-content: center;
-    color: purple;
+    color: black;
 }
 
 
@@ -58,6 +60,7 @@ h3 {
     margin: 8px;
     margin-left: 8px;
     margin-right: 8px;
+    transition: 250ms ease;
 }
 
 .singleBut:active {
@@ -92,7 +95,7 @@ h3 {
     margin-right: 50px;
     margin-top: 30px;
     margin-bottom: 100px;
-    background-color: purple;
-    color: white;
-    border: 7px solid purple;
+    background-color: wheat;
+    color: black;
+    border: 7px solid white;
 }
