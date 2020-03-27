@@ -1,7 +1,7 @@
 # Simon Says Game
 #### A project by Briahna Yee for General Assembly's SEI Fundamentals course
 
-![Simon Game Screenshot](https://i.imgur.com/i33xewR.png)
+![Simon Game Screenshot](https://imgur.com/tVI3rYZ)
 
 ## Description
 This is a memory game based off the classic electronic Simon games where the user must remember and repeat the pattern that the Simon game displays. Each level adds another element of the pattern to remember. 
