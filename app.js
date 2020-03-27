@@ -11,6 +11,8 @@ let startButtons = {
   2: document.getElementById('reset')
 }
 
+let timer;
+
 let message = document.getElementById('message')
 
 //Establish empty arrays
@@ -18,7 +20,7 @@ let simonPattern = [];
 let userPattern = [];
 
 //Functions
-const randomColor = (x, y) => Math.ceil(Math.random() * (4 - 1) + 1);
+const randomColor = (x, y) => Math.ceil(Math.random() * 4);
 
 const lightOn = (i) => {
   simonButtons[simonPattern[i]].style.opacity = .2;
@@ -27,7 +29,7 @@ const lightOn = (i) => {
 
 function lightOff(i) {
   simonButtons[simonPattern[i]].style.opacity = 1;
-  setTimeout(() => {
+  timer = setTimeout(() => {
     i++
     if (i < simonPattern.length) {
       lightOn(i)
@@ -39,7 +41,7 @@ function lightOff(i) {
 let startRound = function () {
   let newColor = randomColor();
   simonPattern.push(newColor);
-  setTimeout(() => {
+  timer = setTimeout(() => {
     lightOn(0);
   }, 500)
 }
@@ -77,6 +79,7 @@ startButtons[2].addEventListener('click', () => {
   for (let i = 1; i < Object.keys(simonButtons).length; i++) {
     simonButtons[i].style.opacity = 1;
   }
+  clearTimeout(timer);
   message.innerHTML = "Game reset.";
 })
 
